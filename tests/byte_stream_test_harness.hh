@@ -93,9 +93,7 @@ struct PeekOnce : public Peek
   using Peek::Peek;
 
   std::string description() const override
-  {
-    return "peek() gives exactly \"" + Printer::prettify( output_ ) + "\"";
-  }
+  { return "peek() gives exactly \"" + Printer::prettify( output_ ) + "\""; }
 
   void execute( ByteStream& bs ) const override
   {

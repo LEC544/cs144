@@ -40,9 +40,7 @@ struct SendDatagram : public Action<InterfaceAndOutput>
   Address next_hop;
 
   std::string description() const override
-  {
-    return "request to send datagram (to next hop " + next_hop.ip() + "): " + dgram.header.to_string();
-  }
+  { return "request to send datagram (to next hop " + next_hop.ip() + "): " + dgram.header.to_string(); }
 
   void execute( InterfaceAndOutput& interface ) const override { interface.first.send_datagram( dgram, next_hop ); }
 
@@ -50,9 +48,7 @@ struct SendDatagram : public Action<InterfaceAndOutput>
 };
 
 inline std::string concat( const std::vector<std::string>& buffers )
-{
-  return std::accumulate( buffers.begin(), buffers.end(), std::string {} );
-}
+{ return std::accumulate( buffers.begin(), buffers.end(), std::string {} ); }
 
 template<class T>
 bool equal( const T& t1, const T& t2 )

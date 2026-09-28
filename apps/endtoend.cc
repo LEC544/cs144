@@ -97,9 +97,7 @@ private:
     pair<FileDescriptor, FileDescriptor> sockets { make_socket_pair() };
 
     void transmit( const NetworkInterface& n [[maybe_unused]], const EthernetFrame& x ) override
-    {
-      sockets.first.write( serialize( x ) );
-    }
+    { sockets.first.write( serialize( x ) ); }
   };
 
   shared_ptr<Sender> sender_ = make_shared<Sender>();
@@ -188,9 +186,7 @@ void program_body( bool is_client, const string& bounce_host, const string& boun
   public:
     std::queue<EthernetFrame> frames {};
     void transmit( const NetworkInterface& n [[maybe_unused]], const EthernetFrame& x ) override
-    {
-      frames.push( x );
-    }
+    { frames.push( x ); }
   };
 
   auto router_to_host = make_shared<FramesOut>();

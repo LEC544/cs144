@@ -83,9 +83,7 @@ void speed_test( const size_t num_chunks,   // NOLINT(bugprone-easily-swappable-
 }
 
 void program_body()
-{
-  speed_test( 10000, 1500, 1370 );
-}
+{ speed_test( 10000, 1500, 1370 ); }
 
 int main()
 {

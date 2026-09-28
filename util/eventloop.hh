@@ -92,10 +92,8 @@ public:
     const CallbackT& cancel = [] {},
     const CallbackT& error = [] {} );
 
-  RuleHandle add_rule(
-    size_t category_id,
-    const CallbackT& callback,
-    const InterestT& interest = [] { return true; } );
+  RuleHandle
+  add_rule( size_t category_id, const CallbackT& callback, const InterestT& interest = [] { return true; } );
 
   //! Calls [poll(2)](\ref man2::poll) and then executes callback for each ready fd.
   Result wait_next_event( int timeout_ms );
@@ -103,9 +101,7 @@ public:
   // convenience function to add category and rule at the same time
   template<typename... Targs>
   auto add_rule( const std::string& name, Targs&&... Fargs )
-  {
-    return add_rule( add_category( name ), std::forward<Targs>( Fargs )... );
-  }
+  { return add_rule( add_category( name ), std::forward<Targs>( Fargs )... ); }
 };
 
 using Direction = EventLoop::Direction;
